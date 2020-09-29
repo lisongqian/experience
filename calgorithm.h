@@ -1,17 +1,16 @@
 //
 // Created by lisongqian on 2020/9/28.
 //
-#include "global.h"
-#include "algorithm.h"
 
-template<typename ElemType>
-void BuildMaxHeap(ElemType A[], int len)
-{
-	for (int i = len / 2; i > 0; i--)
-	{
-		HeadAdjust(A, i, len);
-	}
-}
+#ifndef EXPERIENCE_CALGORITHM_H
+#define EXPERIENCE_CALGORITHM_H
+
+#include "global.h"
+
+/**********************************************
+ * 堆排序
+ **********************************************/
+
 
 /**
  * 函数HeadAdjust将元素k为根的子树进行调整
@@ -39,6 +38,15 @@ void HeadAdjust(ElemType A[], int k, int len)
 }
 
 template<typename ElemType>
+void BuildMaxHeap(ElemType A[], int len)
+{
+	for (int i = len / 2; i > 0; i--)
+	{
+		HeadAdjust(A, i, len);
+	}
+}
+
+template<typename ElemType>
 void HeapSort(ElemType A[], int len)
 {
 	BuildMaxHeap(A, len);
@@ -48,3 +56,5 @@ void HeapSort(ElemType A[], int len)
 		HeadAdjust(A, 1, i - 1);
 	}
 }
+
+#endif //EXPERIENCE_CALGORITHM_H

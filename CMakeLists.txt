@@ -3,4 +3,4 @@ project(experience)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(experience main.cpp algorithm.h global.cpp global.h test.cpp algorithm.cpp)
+add_executable(experience main.cpp calgorithm.h calgorithm.cpp global.cpp global.h )

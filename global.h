@@ -5,7 +5,14 @@
 #ifndef EXPERIENCE_GLOBAL_H
 #define EXPERIENCE_GLOBAL_H
 
-template <typename ElemType>
-bool Swap(ElemType &a,ElemType &b);
+template<typename ElemType>
+bool Swap(ElemType &a, ElemType &b)
+{
+	ElemType temp;
+	temp = a;
+	a = b;
+	b = temp;
+	return true;
+}
 
 #endif //EXPERIENCE_GLOBAL_H
