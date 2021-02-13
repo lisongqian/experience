@@ -14,8 +14,21 @@ void solution105()
 	TreeNode *root = Solution::buildTree(p, i);
 	printTree(root);
 }
+/**
+ * ±‡º≠æ‡¿Î
+ */
+void solution72()
+{
+	string inputStr = "ACT,AGCT";
+	string word1, word2;
+	int splitIndex = inputStr.find(',');
+	word1 = inputStr.substr(0, splitIndex);
+	word2 = inputStr.substr(splitIndex + 1, inputStr.size());
+	cout << Solution::minDistance(word1, word2) << endl;
+}
 
 int main()
 {
+	solution72();
 	return 0;
 }

@@ -4,12 +4,17 @@
 
 #ifndef EXPERIENCE_SOLUTION_H
 #define EXPERIENCE_SOLUTION_H
-
+#pragma once
 #include <vector>
+#include <string>
 #include <algorithm>
 #include <queue>
+#include "global.h"
+#include "Solution.h"
 
 using std::vector;
+using std::string;
+extern int minInt(int count, ...);
 
 struct TreeNode
 {
@@ -32,9 +37,9 @@ class Solution
 public:
 	/**
 	 * 根据前序和中序序列构建二叉树
-	 * @param preorder
-	 * @param inorder
-	 * @return
+	 * @param preorder 前序序列
+	 * @param inorder 中序序列
+	 * @return 根节点
 	 */
 	static TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
 	{
@@ -53,6 +58,47 @@ public:
 			root->right = buildTree(rightPre, rightIn);
 		}
 		return root;
+	}
+	/**
+	 * 编辑距离。计算通过插入和删除操作使得从字符串word1变为word2的最少操作数
+	 * @param word1 初始字符串
+	 * @param word2 目标字符串
+	 * @return 最少操作数
+	 */
+	static int minDistance(string word1, string word2)
+	{
+		int count = 0;
+		if (word1 == word2)
+		{
+			return count;
+		}
+		if (word1.empty() || word2.empty())
+		{
+			return word1.empty() ? word2.size() : word1.size();
+		}
+		vector<vector<int> > dp(word1.size() + 1, vector<int>(word2.size() + 1));
+		for (int i = 1; i <= word1.size(); i++)
+		{
+			dp[i][0] = i;
+		}
+		for (int i = 1; i <= word2.size(); i++)
+		{
+			dp[0][i] = i;
+		}
+		for (int i = 1; i <= word1.size(); i++)
+		{
+			for (int j = 1; j <= word2.size(); j++)
+			{
+				if (word1[i - 1] == word2[j - 1])
+					dp[i][j] = dp[i - 1][j - 1];
+				else
+				{
+					// minInt在global.cpp中定义
+					dp[i][j] = minInt(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
+				}
+			}
+		}
+		return dp[word1.size()][word2.size()];
 	}
 };
 

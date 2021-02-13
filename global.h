@@ -5,6 +5,7 @@
 #ifndef EXPERIENCE_GLOBAL_H
 #define EXPERIENCE_GLOBAL_H
 
+#pragma once
 #include "Solution.h"
 
 #define NAMELEN 64
@@ -64,5 +65,6 @@ bool Swap(ElemType &a, ElemType &b)
 
 void printTree(TreeNode *root);
 
+int minInt(int count, ...);
 
 #endif //EXPERIENCE_GLOBAL_H
