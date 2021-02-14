@@ -6,6 +6,7 @@
 #define EXPERIENCE_GLOBAL_H
 
 #pragma once
+#include <cstdarg>
 #include "Solution.h"
 
 #define NAMELEN 64

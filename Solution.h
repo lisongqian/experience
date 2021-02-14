@@ -5,16 +5,22 @@
 #ifndef EXPERIENCE_SOLUTION_H
 #define EXPERIENCE_SOLUTION_H
 #pragma once
+
 #include <vector>
 #include <string>
+#include <cstdarg>
 #include <algorithm>
-#include <queue>
+#include <stack>
 #include "global.h"
-#include "Solution.h"
 
 using std::vector;
 using std::string;
+using std::stack;
+using std::max;
+using std::min;
+
 extern int minInt(int count, ...);
+
 
 struct TreeNode
 {
@@ -59,6 +65,7 @@ public:
 		}
 		return root;
 	}
+
 	/**
 	 * 编辑距离。计算通过插入和删除操作使得从字符串word1变为word2的最少操作数
 	 * @param word1 初始字符串
@@ -99,6 +106,62 @@ public:
 			}
 		}
 		return dp[word1.size()][word2.size()];
+	}
+
+	/**
+	 * 最大矩形
+	 * @param matrix
+	 * @return
+	 */
+	static int maximalRectangle(vector<vector<char> > &matrix)
+	{
+		if (matrix.empty() || matrix[0].empty())
+		{
+			return 0;
+		}
+		int area = 0;
+		int m = matrix.size();
+		int n = matrix[0].size();
+		stack<int> s;
+		vector<int> height(n, 0);
+		vector<int> left(n, 0);
+		vector<int> right(n, n);
+		for (int i = 0; i < m; ++i)
+		{
+			int currLeft = 0, currRight = n;
+			for (int j = 0; j < n; ++j)
+			{
+				if (matrix[i][j] == '1')
+				{
+					height[j]++;
+					left[j] = max(left[j], currLeft);
+				}
+				else
+				{
+					height[j] = 0;
+					left[j] = 0;
+					currLeft = j + 1;
+
+				}
+			}
+			for (int j = n - 1; j >= 0; j--)
+			{
+				if (matrix[i][j] == '1')
+				{
+					right[j] = min(right[j], currRight);
+				}
+				else
+				{
+					right[j] = n;
+					currRight = j;
+				}
+			}
+			for (int j = 0; j < n; ++j)
+			{
+				area = max(area, (right[j] - left[j]) * height[j]);
+			}
+		}
+		return area;
 	}
 };
 

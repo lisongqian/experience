@@ -14,8 +14,9 @@ void solution105()
 	TreeNode *root = Solution::buildTree(p, i);
 	printTree(root);
 }
+
 /**
- * ±‡º≠æ‡¿Î
+ * 72.±‡º≠æ‡¿Î
  */
 void solution72()
 {
@@ -27,8 +28,30 @@ void solution72()
 	cout << Solution::minDistance(word1, word2) << endl;
 }
 
+/**
+ * 85.◊Ó¥Ûæÿ–Œ
+ */
+void solution85()
+{
+	char a[4][5] = {
+			{'1', '0', '1', '0', '0'},
+			{'1', '0', '1', '1', '1'},
+			{'1', '1', '1', '1', '1'},
+			{'1', '0', '0', '1', '0'}
+	};
+	vector<vector<char>> matrix(4,vector<char>(5));
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 5; ++j)
+		{
+			matrix[i][j] = a[i][j];
+		}
+	}
+	cout << Solution::maximalRectangle(matrix) << endl;
+}
+
 int main()
 {
-	solution72();
+	solution85();
 	return 0;
 }

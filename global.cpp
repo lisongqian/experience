@@ -2,7 +2,6 @@
 // Created by LiSongqian on 2020/9/28.
 //
 #include <iostream>
-#include <cstdarg>
 #include "global.h"
 
 using std::cout;
