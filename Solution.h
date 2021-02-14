@@ -163,6 +163,37 @@ public:
 		}
 		return area;
 	}
+
+	/**
+	 * 放置盒子
+	 */
+	static int minimumBoxes(int n)
+	{
+		unsigned long left = 0, right = n;    // 大数处理
+		unsigned long mid = 0;                // 大数处理
+		while (left < right)
+		{
+			mid = (left + right) / 2;
+			if ((unsigned long long) mid * (mid + 1) * (mid + 2) / 6 < n)
+			{
+				left = mid + 1;
+			}
+			else
+			{
+				right = mid;
+			}
+		}
+		left--;// 找到满足最大三角堆的高h
+		long surplus = n - left * (left + 1) * (left + 2) / 6; // 剩余方块数，大数处理
+		int result = left * (left + 1) / 2;// 三角堆占用的地面大小
+		int i = 0;
+		while (surplus > 0)
+		{
+			surplus -= ++i;
+			result++;
+		}
+		return result;
+	}
 };
 
 
