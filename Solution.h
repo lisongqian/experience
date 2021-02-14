@@ -11,11 +11,13 @@
 #include <cstdarg>
 #include <algorithm>
 #include <stack>
+#include <set>
 #include "global.h"
 
 using std::vector;
 using std::string;
 using std::stack;
+using std::set;
 using std::max;
 using std::min;
 
@@ -193,6 +195,31 @@ public:
 			result++;
 		}
 		return result;
+	}
+
+	/**
+	 * 数组的最小偏移量
+	 * @param nums
+	 * @return
+	 */
+	static int minimumDeviation(vector<int> &nums)
+	{
+		set<int> s;
+		for (int num : nums)
+			s.insert(num % 2 == 0 ? num : num * 2);
+		auto minNum = s.begin();
+		auto maxNum = --s.end();
+		int diff = *maxNum - *minNum;
+		while (*maxNum % 2 == 0)
+		{
+			int temp = *maxNum / 2;
+			s.erase(maxNum);
+			s.insert(temp);
+			minNum = s.begin();
+			maxNum = --s.end();
+			diff = min(diff, *maxNum - *minNum);
+		}
+		return diff;
 	}
 };
 

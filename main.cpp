@@ -6,6 +6,7 @@ using namespace std;
 
 /**
  * 105.前序和中序遍历构建二叉树
+ * https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  */
 void solution105()
 {
@@ -17,6 +18,7 @@ void solution105()
 
 /**
  * 72.编辑距离
+ * https://leetcode-cn.com/problems/building-boxes/
  */
 void solution72()
 {
@@ -30,6 +32,7 @@ void solution72()
 
 /**
  * 85.最大矩形
+ * https://leetcode-cn.com/problems/maximal-rectangle/
  */
 void solution85()
 {
@@ -52,19 +55,26 @@ void solution85()
 
 /**
  * 1739.放置盒子
- * @return
+ * https://leetcode-cn.com/problems/building-boxes/
  */
 void solution1739()
 {
-//	cout << Solution::minimumBoxes(126) << endl;
-	// 预期结果 39
 	cout << Solution::minimumBoxes(37910271) << endl;
 	// 完整三角堆中间变量：result=185745, left=609
 	// 预期结果 186146
 }
+/**
+ * 1675. 数组的最小偏移量
+ * https://leetcode-cn.com/problems/minimize-deviation-in-array/
+ */
+void solution1605()
+{
+	vector<int> vec = {4, 1, 5, 20, 3};
+	cout << Solution::minimumDeviation(vec) << endl;
+}
 
 int main()
 {
-	solution1739();
+	solution1605();
 	return 0;
 }
