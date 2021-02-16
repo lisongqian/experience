@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <stack>
 #include <set>
+#include <cmath>
 #include "global.h"
 
 using std::vector;
@@ -23,6 +24,8 @@ using std::min;
 
 extern int minInt(int count, ...);
 
+template<typename ElemType>
+extern bool Swap(ElemType &a, ElemType &b);
 
 struct TreeNode
 {
@@ -220,6 +223,67 @@ public:
 			diff = min(diff, *maxNum - *minNum);
 		}
 		return diff;
+	}
+
+	static void dfs(vector<int> &side, int n, int k, int i, string &res)
+	{
+		int currNode = i % static_cast<int>(pow(k, n - 1));
+		for (int j = 0; j < k; ++j)
+		{
+			int t = currNode * k + j;
+			if (!side[t]++) // 仅遍历没有走过的边
+			{
+				dfs(side, n, k, t, res);
+				res += j + '0';
+			}
+		}
+	}
+
+	/**
+	 * 破解保险箱
+	 * @param n 密码位数
+	 * @param k k个数字
+	 * @return 密码串
+	 */
+	static string crackSafe(int n, int k)
+	{
+		int node = pow(k, n - 1);            /* 节点个数 */
+		vector<int> side(node * k, 0);    /* 边数标志，用来指示每条边是否遍历过 */
+		string res;
+		dfs(side, n, k, 0, res);        /* 从 n -1 个 0 的节点开始寻找 */
+		res.append(n - 1, '0');            /* 补充起始节点字符串 */
+		return res;                            /* 无需 reverse，翻转前后均为正确答案 */
+	}
+
+	/**
+	 * 括号生成
+	 * @param n
+	 * @return
+	 */
+	vector<string> generateParenthesis(int n)
+	{
+		strList.clear();
+		recursive("", 0, 0, n);
+		return strList;
+	}
+
+	vector<string> strList;
+
+	void recursive(string str, int left, int right, int n)
+	{
+		if (left == n && right == n)
+		{
+			strList.push_back(str);
+			return;
+		}
+		if (left < n)
+		{
+			recursive(str + "(", left + 1, right, n);
+		}
+		if (left > right)
+		{
+			recursive(str + ")", left, right + 1, n);
+		}
 	}
 };
 
