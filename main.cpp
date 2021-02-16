@@ -84,7 +84,8 @@ void solution753()
 	cout << Solution::crackSafe(2, 2) << endl;
 }
 
-/**22. 括号生成
+/**
+ * 22. 括号生成
  * https://leetcode-cn.com/problems/generate-parentheses/
  */
 void solution22()
