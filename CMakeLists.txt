@@ -7,7 +7,7 @@ add_executable(experience
         main.cpp
         global.cpp
         global.h
-        Solution.h)
+        Solution.h ccf.h)
 
 #add_executable(client
 #        client.cpp)
