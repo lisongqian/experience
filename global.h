@@ -12,15 +12,15 @@
 #define NAMELEN 64
 #define PI 3.1415926
 
-#if defined(__GNUG__)    // GCC±àÒëÆ÷Ô¤¶¨ÒåµÄºê
+#if defined(__GNUG__)    // GCCç¼–è¯‘å™¨é¢„å®šä¹‰çš„å®
 #	ifndef DISALIGN
 #		define DISALIGN __attribute__((packed))
 #	endif
 
 #else
 #	define DISALIGN
-#	if !defined(AIX)	// ·Ç AIX
-#		define WIN_BYTEALIGN		// WIN32 CXXÊ¹ÓÃÒ»ÖÂµÄ¶ÔÆëºê¶¨Òå
+#	if !defined(AIX)	// é AIX
+#		define WIN_BYTEALIGN		// WIN32 CXXä½¿ç”¨ä¸€è‡´çš„å¯¹é½å®å®šä¹‰
 #		define DISALIGN
 #	endif
 

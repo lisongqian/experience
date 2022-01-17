@@ -1,7 +1,7 @@
 /***************************************
 *
 * Created by LiSongqian on 2021/1/4.
-* TCP·şÎñ¶Ë
+* TCPæœåŠ¡ç«¯
 *
 **************************************/
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
@@ -21,7 +21,7 @@ int		port;
 
 int tcpServer()
 {
-	//¼ÓÔØÌ×½Ó×Ö
+	//åŠ è½½å¥—æ¥å­—
 	WSADATA wsaData;
 	char buff[1024];
 	memset(buff, 0, sizeof(buff));
@@ -37,31 +37,31 @@ int tcpServer()
 	addrSrv.sin_port = htons(port);
 	addrSrv.sin_addr.S_un.S_addr = inet_addr(ip);
 
-	//´´½¨Ì×½Ó×Ö
+	//åˆ›å»ºå¥—æ¥å­—
 	SOCKET sockClient = socket(AF_INET, SOCK_STREAM, 0);
 	if (SOCKET_ERROR == sockClient){
 		printf("Socket() error:%d", WSAGetLastError());
 		return 1;
 	}
 
-	//Ïò·şÎñÆ÷·¢³öÁ¬½ÓÇëÇó
+	//å‘æœåŠ¡å™¨å‘å‡ºè¿æ¥è¯·æ±‚
 	if (connect(sockClient, (struct  sockaddr*)&addrSrv, sizeof(addrSrv)) == INVALID_SOCKET){
 		printf("Connect failed:%d", WSAGetLastError());
 		return 1;
 	}
 	else
 	{
-		//½ÓÊÕÊı¾İ
+		//æ¥æ”¶æ•°æ®
 		recv(sockClient, buff, sizeof(buff), 0);
 		printf("%s\n", buff);
 	}
 
-	//·¢ËÍÊı¾İ
+	//å‘é€æ•°æ®
 	char *buffSend = "hello, this is a Client....";
 	send(sockClient, buffSend, strlen(buffSend) + 1, 0);
 	printf("%d", strlen(buffSend) + 1);
 
-	//¹Ø±ÕÌ×½Ó×Ö
+	//å…³é—­å¥—æ¥å­—
 	closesocket(sockClient);
 	WSACleanup();
 	system("pause");

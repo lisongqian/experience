@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
- * 105.Ç°ĞòºÍÖĞĞò±éÀú¹¹½¨¶ş²æÊ÷
+ * 105.å‰åºå’Œä¸­åºéå†æ„å»ºäºŒå‰æ ‘
  * https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  */
 void solution105()
@@ -18,7 +18,7 @@ void solution105()
 }
 
 /**
- * 72.±à¼­¾àÀë
+ * 72.ç¼–è¾‘è·ç¦»
  * https://leetcode-cn.com/problems/building-boxes/
  */
 void solution72()
@@ -32,7 +32,7 @@ void solution72()
 }
 
 /**
- * 85.×î´ó¾ØĞÎ
+ * 85.æœ€å¤§çŸ©å½¢
  * https://leetcode-cn.com/problems/maximal-rectangle/
  */
 void solution85()
@@ -55,18 +55,18 @@ void solution85()
 }
 
 /**
- * 1739.·ÅÖÃºĞ×Ó
+ * 1739.æ”¾ç½®ç›’å­
  * https://leetcode-cn.com/problems/building-boxes/
  */
 void solution1739()
 {
 	cout << Solution::minimumBoxes(37910271) << endl;
-	// ÍêÕûÈı½Ç¶ÑÖĞ¼ä±äÁ¿£ºresult=185745, left=609
-	// Ô¤ÆÚ½á¹û 186146
+	// å®Œæ•´ä¸‰è§’å †ä¸­é—´å˜é‡ï¼šresult=185745, left=609
+	// é¢„æœŸç»“æœ 186146
 }
 
 /**
- * 1675. Êı×éµÄ×îĞ¡Æ«ÒÆÁ¿
+ * 1675. æ•°ç»„çš„æœ€å°åç§»é‡
  * https://leetcode-cn.com/problems/minimize-deviation-in-array/
  */
 void solution1605()
@@ -76,7 +76,7 @@ void solution1605()
 }
 
 /**
- * 753. ÆÆ½â±£ÏÕÏä
+ * 753. ç ´è§£ä¿é™©ç®±
  * https://leetcode-cn.com/problems/cracking-the-safe/
  */
 void solution753()
@@ -85,7 +85,7 @@ void solution753()
 }
 
 /**
- * 22. À¨ºÅÉú³É
+ * 22. æ‹¬å·ç”Ÿæˆ
  * https://leetcode-cn.com/problems/generate-parentheses/
  */
 void solution22()
@@ -102,13 +102,13 @@ bool cmp(const string &a, const string &b)
 }
 
 /**
- * Êı×é×é³É×î´óÊı
+ * æ•°ç»„ç»„æˆæœ€å¤§æ•°
  *
  */
 void solutoinMaxArrNum()
 {
 	vector<string> a = {"10", "1", "2"};
-	/* Ìá½»Ê±Ê¹ÓÃ
+	/* æäº¤æ—¶ä½¿ç”¨
 	string str;
 	cin >> str;
 	str = str.substr(1, str.length() - 2);

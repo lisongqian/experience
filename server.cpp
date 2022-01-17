@@ -1,7 +1,7 @@
 /***************************************
  *
  * Created by LiSongqian on 2021/1/4.
- * TCP·şÎñ¶Ë
+ * TCPæœåŠ¡ç«¯
  *
  **************************************/
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
@@ -29,12 +29,12 @@ int tcpServer()
 		return 1;
 	}
 
-	//´´½¨ÓÃÓÚ¼àÌıµÄÌ×½Ó×Ö
+	//åˆ›å»ºç”¨äºç›‘å¬çš„å¥—æ¥å­—
 	SOCKET sockSrv = socket(AF_INET, SOCK_STREAM, 0);
 
 	SOCKADDR_IN addrSrv;
 	addrSrv.sin_family = AF_INET;
-	addrSrv.sin_port = htons(port); //1024ÒÔÉÏµÄ¶Ë¿ÚºÅ
+	addrSrv.sin_port = htons(port); //1024ä»¥ä¸Šçš„ç«¯å£å·
 	addrSrv.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
 
 	int retVal = bind(sockSrv, (LPSOCKADDR)&addrSrv, sizeof(SOCKADDR_IN));
@@ -51,7 +51,7 @@ int tcpServer()
 	SOCKADDR_IN addrClient;
 	int len = sizeof(SOCKADDR);
 
-//µÈ´ı¿Í»§ÇëÇóµ½À´
+//ç­‰å¾…å®¢æˆ·è¯·æ±‚åˆ°æ¥
 	SOCKET sockConn = accept(sockSrv, (SOCKADDR *)&addrClient, &len);
 	if (sockConn == SOCKET_ERROR){
 		printf("Accept failed:%d", WSAGetLastError());
@@ -60,7 +60,7 @@ int tcpServer()
 
 	printf("Accept client IP:[%s]\n", inet_ntoa(addrClient.sin_addr));
 
-	//·¢ËÍÊı¾İ
+	//å‘é€æ•°æ®
 	int iSend = send(sockConn, buf, sizeof(buf), 0);
 	if (iSend == SOCKET_ERROR){
 		printf("send failed");
@@ -69,7 +69,7 @@ int tcpServer()
 
 	char recvBuf[100];
 	memset(recvBuf, 0, sizeof(recvBuf));
-	//         //½ÓÊÕÊı¾İ
+	//         //æ¥æ”¶æ•°æ®
 	recv(sockConn, recvBuf, sizeof(recvBuf), 0);
 	printf("%s\n", recvBuf);
 

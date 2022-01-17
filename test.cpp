@@ -12,7 +12,7 @@ using std::bitset;
 
 
 /**
- * ²âÊÔ×óÒÆÓÒÒÆ
+ * æµ‹è¯•å·¦ç§»å³ç§»
  * @return
  */
 int moveTest()

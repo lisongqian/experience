@@ -47,10 +47,10 @@ class Solution
 {
 public:
 	/**
-	 * ¸ù¾İÇ°ĞòºÍÖĞĞòĞòÁĞ¹¹½¨¶ş²æÊ÷
-	 * @param preorder Ç°ĞòĞòÁĞ
-	 * @param inorder ÖĞĞòĞòÁĞ
-	 * @return ¸ù½Úµã
+	 * æ ¹æ®å‰åºå’Œä¸­åºåºåˆ—æ„å»ºäºŒå‰æ ‘
+	 * @param preorder å‰åºåºåˆ—
+	 * @param inorder ä¸­åºåºåˆ—
+	 * @return æ ¹èŠ‚ç‚¹
 	 */
 	static TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
 	{
@@ -72,10 +72,10 @@ public:
 	}
 
 	/**
-	 * ±à¼­¾àÀë¡£¼ÆËãÍ¨¹ı²åÈëºÍÉ¾³ı²Ù×÷Ê¹µÃ´Ó×Ö·û´®word1±äÎªword2µÄ×îÉÙ²Ù×÷Êı
-	 * @param word1 ³õÊ¼×Ö·û´®
-	 * @param word2 Ä¿±ê×Ö·û´®
-	 * @return ×îÉÙ²Ù×÷Êı
+	 * ç¼–è¾‘è·ç¦»ã€‚è®¡ç®—é€šè¿‡æ’å…¥å’Œåˆ é™¤æ“ä½œä½¿å¾—ä»å­—ç¬¦ä¸²word1å˜ä¸ºword2çš„æœ€å°‘æ“ä½œæ•°
+	 * @param word1 åˆå§‹å­—ç¬¦ä¸²
+	 * @param word2 ç›®æ ‡å­—ç¬¦ä¸²
+	 * @return æœ€å°‘æ“ä½œæ•°
 	 */
 	static int minDistance(string word1, string word2)
 	{
@@ -105,7 +105,7 @@ public:
 					dp[i][j] = dp[i - 1][j - 1];
 				else
 				{
-					// minIntÔÚglobal.cppÖĞ¶¨Òå
+					// minIntåœ¨global.cppä¸­å®šä¹‰
 					dp[i][j] = minInt(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
 				}
 			}
@@ -114,7 +114,7 @@ public:
 	}
 
 	/**
-	 * ×î´ó¾ØĞÎ
+	 * æœ€å¤§çŸ©å½¢
 	 * @param matrix
 	 * @return
 	 */
@@ -170,12 +170,12 @@ public:
 	}
 
 	/**
-	 * ·ÅÖÃºĞ×Ó
+	 * æ”¾ç½®ç›’å­
 	 */
 	static int minimumBoxes(int n)
 	{
-		unsigned long left = 0, right = n;    // ´óÊı´¦Àí
-		unsigned long mid = 0;                // ´óÊı´¦Àí
+		unsigned long left = 0, right = n;    // å¤§æ•°å¤„ç†
+		unsigned long mid = 0;                // å¤§æ•°å¤„ç†
 		while (left < right)
 		{
 			mid = (left + right) / 2;
@@ -188,9 +188,9 @@ public:
 				right = mid;
 			}
 		}
-		left--;// ÕÒµ½Âú×ã×î´óÈı½Ç¶ÑµÄ¸ßh
-		long surplus = n - left * (left + 1) * (left + 2) / 6; // Ê£Óà·½¿éÊı£¬´óÊı´¦Àí
-		int result = left * (left + 1) / 2;// Èı½Ç¶ÑÕ¼ÓÃµÄµØÃæ´óĞ¡
+		left--;// æ‰¾åˆ°æ»¡è¶³æœ€å¤§ä¸‰è§’å †çš„é«˜h
+		long surplus = n - left * (left + 1) * (left + 2) / 6; // å‰©ä½™æ–¹å—æ•°ï¼Œå¤§æ•°å¤„ç†
+		int result = left * (left + 1) / 2;// ä¸‰è§’å †å ç”¨çš„åœ°é¢å¤§å°
 		int i = 0;
 		while (surplus > 0)
 		{
@@ -201,7 +201,7 @@ public:
 	}
 
 	/**
-	 * Êı×éµÄ×îĞ¡Æ«ÒÆÁ¿
+	 * æ•°ç»„çš„æœ€å°åç§»é‡
 	 * @param nums
 	 * @return
 	 */
@@ -231,7 +231,7 @@ public:
 		for (int j = 0; j < k; ++j)
 		{
 			int t = currNode * k + j;
-			if (!side[t]++) // ½ö±éÀúÃ»ÓĞ×ß¹ıµÄ±ß
+			if (!side[t]++) // ä»…éå†æ²¡æœ‰èµ°è¿‡çš„è¾¹
 			{
 				dfs(side, n, k, t, res);
 				res += j + '0';
@@ -240,23 +240,23 @@ public:
 	}
 
 	/**
-	 * ÆÆ½â±£ÏÕÏä
-	 * @param n ÃÜÂëÎ»Êı
-	 * @param k k¸öÊı×Ö
-	 * @return ÃÜÂë´®
+	 * ç ´è§£ä¿é™©ç®±
+	 * @param n å¯†ç ä½æ•°
+	 * @param k kä¸ªæ•°å­—
+	 * @return å¯†ç ä¸²
 	 */
 	static string crackSafe(int n, int k)
 	{
-		int node = pow(k, n - 1);            /* ½Úµã¸öÊı */
-		vector<int> side(node * k, 0);    /* ±ßÊı±êÖ¾£¬ÓÃÀ´Ö¸Ê¾Ã¿Ìõ±ßÊÇ·ñ±éÀú¹ı */
+		int node = pow(k, n - 1);            /* èŠ‚ç‚¹ä¸ªæ•° */
+		vector<int> side(node * k, 0);    /* è¾¹æ•°æ ‡å¿—ï¼Œç”¨æ¥æŒ‡ç¤ºæ¯æ¡è¾¹æ˜¯å¦éå†è¿‡ */
 		string res;
-		dfs(side, n, k, 0, res);        /* ´Ó n -1 ¸ö 0 µÄ½Úµã¿ªÊ¼Ñ°ÕÒ */
-		res.append(n - 1, '0');            /* ²¹³äÆğÊ¼½Úµã×Ö·û´® */
-		return res;                            /* ÎŞĞè reverse£¬·­×ªÇ°ºó¾ùÎªÕıÈ·´ğ°¸ */
+		dfs(side, n, k, 0, res);        /* ä» n -1 ä¸ª 0 çš„èŠ‚ç‚¹å¼€å§‹å¯»æ‰¾ */
+		res.append(n - 1, '0');            /* è¡¥å……èµ·å§‹èŠ‚ç‚¹å­—ç¬¦ä¸² */
+		return res;                            /* æ— éœ€ reverseï¼Œç¿»è½¬å‰åå‡ä¸ºæ­£ç¡®ç­”æ¡ˆ */
 	}
 
 	/**
-	 * À¨ºÅÉú³É
+	 * æ‹¬å·ç”Ÿæˆ
 	 * @param n
 	 * @return
 	 */
