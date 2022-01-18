@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include "global.h"
+#include "ccf.h"
 
 using namespace std;
 
@@ -124,25 +125,6 @@ void solutoinMaxArrNum() {
 }
 
 int main() {
-    long int arr[200] = {0};
-    int n;
-    long int N;
-    cin >> n >> N;
-    long int a = 0;
-    for (int i = 1; i <= n; i++) {
-        cin >> a;
-        arr[i] = a;
-    }
-    long int sum = 0;
-    int left = 0, right = 1, num = 0;
-    while (right <= n) {
-        num += arr[right] - arr[left]; // 数量
-        sum += left * (arr[right] - arr[left]);
-        if (right == n)
-            sum += right * (N - num);
-        left++;
-        right++;
-    }
-    cout << sum;
+    so202012();
     return 0;
 }
