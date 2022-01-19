@@ -76,31 +76,123 @@ int so202104() {
     int a = 0;
     for (int i = 0; i < m * n; i++) {
         cin >> a;
-        h[a] ++;
+        h[a]++;
     }
     for (int i = 0; i < L; ++i) {
-        cout<<h[i];
-        if(i<L-1)
-            cout<<" ";
+        cout << h[i];
+        if (i < L - 1)
+            cout << " ";
     }
     return 0;
 }
+
 /**
  * 202012-1 期末预测之安全指数
  * @return
  */
-int so202012()
-{
+int so202012() {
     int n;
-    cin>>n;
-    int a,b;
-    int sum  =0;
+    cin >> n;
+    int a, b;
+    int sum = 0;
     for (int i = 0; i < n; ++i) {
-        cin>>a>>b;
-        sum += a*b;
+        cin >> a >> b;
+        sum += a * b;
     }
-    sum = sum>0?sum:0;
-    cout<<sum;
+    sum = sum > 0 ? sum : 0;
+    cout << sum;
+    return 0;
+}
+
+/**
+ * 202009-1 称检测点查询
+ * @return
+ */
+
+int so202009() {
+    struct point {
+        int index;
+        int d;//距离
+    };
+
+    int n, x, y;
+    cin >> n >> x >> y;
+    int xi, yi;
+    point arr[200] = {0, 0};
+    for (int i = 1; i <= n; ++i) {
+        cin >> xi >> yi;
+        point p = {i, (x - xi) * (x - xi) + (y - yi) * (y - yi)};
+        int j = i - 1;
+        for (; j >= 0; j--) {
+            if (p.d >= arr[j].d)
+                break;
+        }
+        for (int k = i; k > j + 1; k--)
+            arr[k] = arr[k - 1];
+        arr[j + 1] = p;
+    }
+    for (int i = 1; i <= 3; ++i) {
+        cout << arr[i].index << endl;
+    }
+    return 0;
+}
+
+/**
+ * 202006-1	线性分类器
+ * @return
+ */
+int so202006() {
+    struct point {
+        int x;
+        int y;
+    };
+    long int n;
+    int m;
+    cin >> n >> m;
+    vector<point> a;
+    a.clear();
+    vector<point> b;
+    b.clear();
+    int x, y;
+    char c;
+    for (int i = 0; i < n; ++i) {
+        cin >> x >> y;
+        getchar();
+        cin>>c;
+        if (c == 'A') {
+            a.push_back({x,y});
+        } else if (c == 'B') {
+            b.push_back({x,y});
+
+        }
+    }
+    int theta0, theta1, theta2;
+    for (int i = 0; i < m; ++i) {
+        cin >> theta0 >> theta1 >> theta2;
+        bool yes = true;
+        bool optimistic = (theta0 + theta1 * a[0].x + theta2 * a[0].y) > 0;
+        for (int j = 1; j < a.size(); ++j) {
+            bool temp = (theta0 + theta1 * a[j].x + theta2 * a[j].y) > 0;
+            if (temp != optimistic) {
+                yes = false;
+                cout << "No" << endl;
+                break;
+            }
+        }
+        if (yes) // A点落在同侧时
+        {
+            for (int j = 1; j < b.size(); ++j) {
+                bool temp = (theta0 + theta1 * b[j].x + theta2 * b[j].y) > 0;
+                if (temp == optimistic) {// 要求B点不能落在跟A同侧
+                    yes = false;
+                    cout << "No" << endl;
+                    break;
+                }
+            }
+        }
+        if (yes)
+            cout << "Yes" << endl;
+    }
     return 0;
 }
 
