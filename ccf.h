@@ -5,7 +5,7 @@
 
 #ifndef EXPERIENCE_CCF_H
 #define EXPERIENCE_CCF_H
-
+#pragma once
 #include <iostream>
 
 using namespace std;
@@ -142,6 +142,21 @@ int so202009() {
  * @return
  */
 int so202006() {
+/**测试用例
+9 3
+1 1 A
+1 0 A
+1 -1 A
+2 2 B
+2 3 B
+0 1 A
+3 1 B
+1 3 B
+2 0 A
+0 2 -3
+-3 0 2
+-3 1 1
+ */
     struct point {
         int x;
         int y;
