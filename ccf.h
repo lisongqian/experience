@@ -6,6 +6,7 @@
 #ifndef EXPERIENCE_CCF_H
 #define EXPERIENCE_CCF_H
 #pragma once
+
 #include <iostream>
 
 using namespace std;
@@ -173,11 +174,11 @@ int so202006() {
     for (int i = 0; i < n; ++i) {
         cin >> x >> y;
         getchar();
-        cin>>c;
+        cin >> c;
         if (c == 'A') {
-            a.push_back({x,y});
+            a.push_back({x, y});
         } else if (c == 'B') {
-            b.push_back({x,y});
+            b.push_back({x, y});
 
         }
     }
@@ -208,6 +209,85 @@ int so202006() {
         if (yes)
             cout << "Yes" << endl;
     }
+    return 0;
+}
+
+/**
+ * 201912-1 报数
+ * @return
+ */
+int so201912() {
+    int n;
+    int arr[4] = {0};
+    cin >> n;
+    int num = 1, count = 0;
+    for (int i = 0; count < n; i = (i + 1) % 4, num++) {
+        if (num % 7 == 0 || num % 10 == 7 || num / 10 % 10 == 7 || num / 100 % 10 == 7)
+            arr[i]++;
+        else
+            count++;
+    }
+    for (int i: arr) {
+        cout << i << endl;
+    }
+    return 0;
+}
+
+/**
+ * 201909-1	小明种苹果
+ * @return
+ */
+int so201909() {
+    int n, m;
+    cin >> n >> m;
+    long int appleTree = 0;
+    long int appleSum = 0;
+    int appleIndex = 0;
+    int appleIndexDeleteSum = 0;
+    for (int i = 0; i < n; ++i) {
+        cin >> appleTree;
+        appleSum += appleTree;
+        long int deleteNum = 0;
+        long int deleteSum = 0;
+        for (int j = 0; j < m; ++j) {
+            cin >> deleteNum;
+            deleteSum += -deleteNum; // 取正数
+            appleSum += deleteNum;
+        }
+        if (deleteSum > appleIndexDeleteSum) {
+            appleIndex = i;
+            appleIndexDeleteSum = deleteSum;
+        }
+    }
+    cout << appleSum << " " << appleIndex + 1 << " " << appleIndexDeleteSum << endl;
+    return 0;
+}
+
+/**
+ * 201903-1 小中大
+ * @return
+ */
+int so201903() {
+    int n;
+    cin >> n;
+    vector<long int> arr;
+    arr.clear();
+    long int input;
+    for (int i = 0; i < n; ++i) {
+        cin >> input;
+        arr.push_back(input);
+    }
+    long int max = arr[0] > arr[arr.size() - 1] ? arr[0] : arr[arr.size() - 1];
+    long int min = arr[0] < arr[arr.size() - 1] ? arr[0] : arr[arr.size() - 1];
+    cout << max << " ";
+    if (n % 2 == 0) {
+        if ((arr[arr.size() / 2 - 1] + arr[arr.size() / 2]) % 2 != 0)
+            printf("%.1f", (arr[arr.size() / 2 - 1] + arr[arr.size() / 2]) / 2.0);
+        else
+            cout << (arr[arr.size() / 2 - 1] + arr[arr.size() / 2]) / 2;
+    } else
+        cout << arr[(arr.size() - 1) / 2];
+    cout << " " << min;
     return 0;
 }
 
