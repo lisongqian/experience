@@ -291,4 +291,233 @@ int so201903() {
     return 0;
 }
 
+/**
+ * 201812-1	小明上学
+ * @return
+ */
+int so201812() {
+    int r, y, g, n;
+    cin >> r >> y >> g >> n;
+    int sum = 0;
+    int k, t;
+    for (int i = 0; i < n; ++i) {
+        cin >> k >> t;
+        switch (k) {
+            case 0://道路
+            {
+                sum += t;
+                break;
+            }
+            case 1://红灯
+            {
+                sum += t;
+                break;
+            }
+            case 2://黄灯
+            {
+                sum += t + r;
+                break;
+            }
+            case 3://绿灯
+            {
+                break;
+            }
+            default:
+                break;
+        }
+    }
+    cout << sum << endl;
+    return 0;
+}
+
+/**
+ * 201809-1 卖菜
+ * @return
+ */
+int so201809() {
+    int arr[1000] = {0};
+    int n, price;
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        cin >> price;
+        arr[i] = price;
+    }
+    for (int i = 0; i < n; ++i) {
+        if (i == 0) {
+            cout << (arr[i] + arr[i + 1]) / 2 << " ";
+        } else if (i == n - 1) {
+            cout << (arr[i - 1] + arr[i]) / 2 << endl;
+        } else {
+            cout << (arr[i - 1] + arr[i] + arr[i + 1]) / 3 << " ";
+        }
+    }
+    return 0;
+}
+
+/**
+ * 201803-1 跳一跳
+ * @return
+ */
+int so201803() {
+    int num;
+    cin >> num;
+    int score = 0;
+    bool center = false;
+    int pre = 0;
+    while (num != 0) {
+        switch (num) {
+            case 1: {
+                center = false;
+                pre = 0;
+                score++;
+                break;
+            }
+            case 2: {
+                if (center) {
+                    score += pre;
+                }
+                score += 2;
+                pre += 2;
+                center = true;
+                break;
+            }
+            default:
+                break;
+        }
+        cin >> num;
+    }
+    cout << score << endl;
+    return 0;
+}
+
+/**
+ * 201712-1 最小差值
+ * @return
+ */
+int so201712() {
+    int n, num;
+    cin >> n;
+    int arr[1000] = {0};
+    for (int i = 0; i < n; ++i) {
+        cin >> num;
+        int j = i - 1;
+        for (; j >= 0; j--) {
+            if (num > arr[j])
+                break;
+        }
+        for (int k = i; k > j + 1; k--)
+            arr[k] = arr[k - 1];
+        arr[j + 1] = num;
+    }
+    int result = arr[1] - arr[0];
+    for (int i = 2; i < n; ++i) {
+        int temp = arr[i] - arr[i - 1];
+        if (result > temp)
+            result = temp;
+    }
+    cout << result << endl;
+    return 0;
+}
+
+/**
+ * 201709-1 打酱油
+ * @return
+ */
+int so201709() {
+    int n;
+    cin >> n;
+    int sum = 0;
+    sum = (n / 50) * 7 + (n % 50 / 30) * 4 + n % 50 % 30 / 10;
+    cout << sum << endl;
+    return 0;
+}
+
+/**
+ * 201703-1 分蛋糕
+ * @return
+ */
+int so201703() {
+    int n, k;
+    cin >> n >> k;
+    int people = 0, g = 0;
+    bool flag = true;
+    for (int i = 0; i < n; ++i) {
+        int a;
+        cin >> a;
+        if (flag) {
+            people++;
+            flag = false;
+        }
+        g += a;
+        if (g >= k) {
+            flag = true;
+            g = 0;
+        }
+    }
+    cout << people << endl;
+    return 0;
+}
+
+/**
+ * 201612-1 中间数
+ * @return
+ */
+int so201612() {
+    int n;
+    cin >> n;
+    int arr[1000] = {0};
+    int a;
+    for (int i = 0; i < n; ++i) {
+        cin >> a;
+        int j = i - 1;
+        for (; j >= 0; --j) {
+            if (a > arr[j])
+                break;
+        }
+        for (int k = i; k > j + 1; --k) {
+            arr[k] = arr[k - 1];
+        }
+        arr[j + 1] = a;
+    }
+    int mid = arr[n / 2];
+    int small = 0, big = 0;
+    for (int i = n / 2; i >= 0; --i) {
+        if (arr[i] < mid) {
+            small = i + 1;
+            break;
+        }
+    }
+    for (int i = n / 2; i < n; ++i) {
+        if (arr[i] > mid) {
+            big = n - i;
+            break;
+        }
+    }
+    if (small == big)
+        cout << mid << endl;
+    else
+        cout << -1 << endl;
+    return 0;
+}
+
+/**
+ * 201609-1 最大波动
+ * @return
+ */
+int so201609() {
+    int n;
+    cin >> n;
+    int pre, a, result = 0;
+    cin >> pre;
+    for (int i = 1; i < n; ++i) {
+        cin >> a;
+        int temp = a - pre > 0 ? a - pre : pre - a;
+        if (temp > result)
+            result = temp;
+        pre = a;
+    }
+    cout << result << endl;
+    return 0;
+}
+
 #endif //EXPERIENCE_CCF_H
