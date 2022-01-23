@@ -520,4 +520,92 @@ int so201609() {
     return 0;
 }
 
+/**
+ * 201604-1 折点计划
+ * @return
+ */
+int so201604() {
+    int n, pre, a;
+    cin >> n;
+    int sum = 0;
+    bool optimistic = true;
+    for (int i = 0; i < n; ++i) {
+        cin >> a;
+        if (i != 0) {
+            if (i == 1) optimistic = a - pre > 0;
+            bool temp = a - pre > 0;
+            if (optimistic != temp) {
+                sum++;
+                optimistic = temp;
+            }
+        }
+        pre = a;
+    }
+    cout << sum << endl;
+    return 0;
+}
+
+/**
+ * 201512-1 数位之和
+ * @return
+ */
+int so201512() {
+    long int n;
+    cin >> n;
+    int sum = 0;
+    while (n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    cout << sum << endl;
+    return 0;
+}
+
+/**
+ * 201509-1 数列分段
+ * @return
+ */
+int so201509() {
+    int n, pre, a, sum = 0;
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        cin >> a;
+        if (i == 0) {
+            pre = a;
+            sum++;
+        }
+        if (a != pre)
+            sum++;
+        pre = a;
+    }
+    cout << sum << endl;
+    return 0;
+}
+
+/**
+ * 201503-1 图像旋转
+ * @return
+ */
+int so201503() {
+    int n, m;
+    cin >> n >> m;
+    static int a[1000][1000]; //Note: 使用全局变量，避免局部变量的大数组导致堆栈溢出
+    int num;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cin >> num;
+            a[i][j] = num;
+        }
+    }
+    for (int i = m - 1; i >= 0; i--) {
+        for (int j = 0; j < n; ++j) {
+            cout << a[j][i];
+            if (j != n - 1)
+                cout << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
 #endif //EXPERIENCE_CCF_H

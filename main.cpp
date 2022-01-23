@@ -125,6 +125,6 @@ void solutoinMaxArrNum() {
 }
 
 int main() {
-    so201609();
+    so201503();
     return 0;
 }
