@@ -165,9 +165,9 @@ int so202006() {
     long int n;
     int m;
     cin >> n >> m;
-    vector<point> a;
+    vector <point> a;
     a.clear();
-    vector<point> b;
+    vector <point> b;
     b.clear();
     int x, y;
     char c;
@@ -605,6 +605,108 @@ int so201503() {
         }
         cout << endl;
     }
+    return 0;
+}
+
+/**
+ * 201412-1 门禁系统
+ * @return
+ */
+int so201412() {
+    int n;
+    cin >> n;
+    int arr[1000];
+    int a, sum = 1;
+    for (int i = 0; i < n; ++i) {
+        sum = 1;
+        cin >> a;
+        arr[i] = a;
+        for (int j = 0; j < i; ++j) {
+            if (arr[j] == a) sum++;
+        }
+        cout << sum;
+        if (i != n - 1) cout << " ";
+    }
+    return 0;
+}
+
+/**
+ * 201409-1 相邻数对
+ * @return
+ */
+int so201409() {
+    int n;
+    cin >> n;
+    int a[1000];
+    for (int i = 0; i < n; ++i) {
+        int temp;
+        cin >> temp;
+        int j = i - 1;
+        for (; j >= 0; j--) {
+            if (temp > a[j])
+                break;
+        }
+        for (int k = i; k > j + 1; k--) {
+            a[k] = a[k - 1];
+        }
+        a[j + 1] = temp;
+    }
+    int sum = 0;
+    for (int i = 1; i < n; ++i) {
+        if (a[i - 1] + 1 == a[i])
+            sum++;
+    }
+    cout << sum << endl;
+    return 0;
+}
+
+/**
+ * 201403-1 相反数
+ * @return
+ */
+int so201403() {
+    int n, a, sum = 0;
+    int arr[500];
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        cin >> a;
+        for (int j = 0; j < i; ++j) {
+            if (a + arr[j] == 0)
+                sum++;
+        }
+        arr[i] = a;
+    }
+    cout << sum << endl;
+    return 0;
+}
+/**
+ * 201312-1 出现次数最多的数
+ * @return
+ */
+#include <map>
+
+int so201312() {
+    int n;
+    cin >> n;
+    map<int, int> m;
+    m.clear();
+    for (int i = 0; i < n; ++i) {
+        int a;
+        cin >> a;
+        if (m.find(a) == m.end()) {
+            m[a] = 1;
+        } else
+            m[a]++;
+    }
+    int key, value = -1;
+    for (auto & iter : m) {
+        if (iter.second > value) {
+            key = iter.first;
+            value = iter.second;
+        } else if (iter.second == value && iter.first < key)
+            key = iter.first;
+    }
+    cout << key << endl;
     return 0;
 }
 
