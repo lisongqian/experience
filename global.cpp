@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include "global.h"
+#include "Solution.h"
 
 using std::cout;
 using std::endl;

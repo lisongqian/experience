@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include "global.h"
+#include "Solution.h"
 #include "ccf.h"
 
 using namespace std;

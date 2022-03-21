@@ -2,28 +2,35 @@
 // Created by lisongqian on 2020/9/28.
 //
 #include <iostream>
-#include "global.h"
-#include "structtest.h"
-#include <bitset>
 
-using std::cout;
-using std::endl;
-using std::bitset;
+#ifdef WIN32
+#include <WinSock2.h>
+#pragma comment(lib, "ws2_32.lib")
+#else
+#include <arpa/inet.h>
+#endif
+
+#include "global.h"
+
+using namespace std;
 
 
 /**
- * 测试左移右移
+ * 大小端转换
  * @return
  */
-int moveTest()
-{
-	unsigned int state = 0xe0;
-	unsigned int isFa = 0, iFaModel = 0, iFaStCont = 0;
-	isFa = state >> 6;
-	iFaModel = (state & 0x3f) >> 4;
-	iFaStCont = (state & 0x0f) >> 2;
-	cout << state << endl;
-	cout << isFa << " " << iFaModel << " " << iFaStCont << endl;
-	return 0;
-
+int main() {
+    union {
+        int i[2];
+        long k;
+        char c[4];
+    } r{}, *s = &r;
+    s->i[0] = 0x39383736;
+    s->i[1] = 0x383940;
+    cout << s->c << endl;
+// x86为小端模式，需转换为大端(即网络序)
+    s->i[0] = htonl(s->i[0]);
+    s->i[1] = htonl(s->i[1]);
+    cout << s->c << endl;
+    return 0;
 }

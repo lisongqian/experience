@@ -7,7 +7,8 @@
 
 #pragma once
 #include <cstdarg>
-#include "Solution.h"
+
+struct TreeNode;
 
 #define NAMELEN 64
 #define PI 3.1415926
