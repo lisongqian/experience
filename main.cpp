@@ -14,7 +14,7 @@ using namespace std;
 void solution105() {
     vector<int> p = {3, 9, 20, 15, 7};
     vector<int> i = {9, 3, 15, 20, 7};
-    TreeNode *root = Solution::buildTree(p, i);
+    TreeNode* root = Solution::buildTree(p, i);
     printTree(root);
 }
 
@@ -126,6 +126,19 @@ void solutoinMaxArrNum() {
 }
 
 int main() {
-    so201312();
+    Solution s;
+    vector<vector<int>> matrix(3);
+    matrix[0] = {1, 0, 1};
+    matrix[1] = {0, 0, 1};
+    matrix[2] = {0, 0, 1};
+
+//    matrix[0] = {0, 1, 0};
+//    matrix[1] = {1, 0, 1};
+//    matrix[2] = {1, 1, 0};
+
+    vector<int> r = s.findSquare(matrix);
+
+
+
     return 0;
 }
