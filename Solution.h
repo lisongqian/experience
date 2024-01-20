@@ -16,6 +16,7 @@
 #include <unordered_map>
 #include <cmath>
 #include "global.h"
+#include "methods/tree.h"
 
 using std::vector;
 using std::string;
@@ -31,29 +32,6 @@ extern int minInt(int count, ...);
 template<typename ElemType>
 extern bool Swap(ElemType &a, ElemType &b);
 
-struct TreeNode {
-    int val;
-    TreeNode* left;
-    TreeNode* right;
-
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-
-    explicit TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-
-    TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
-};
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 
 class Solution {
 public:

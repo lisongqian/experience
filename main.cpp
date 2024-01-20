@@ -1,9 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include "global.h"
 #include "Solution.h"
-#include "ccf.h"
 
 using namespace std;
 
@@ -126,19 +124,8 @@ void solutoinMaxArrNum() {
 }
 
 int main() {
-    Solution s;
-    vector<vector<int>> matrix(3);
-    matrix[0] = {1, 0, 1};
-    matrix[1] = {0, 0, 1};
-    matrix[2] = {0, 0, 1};
-
-//    matrix[0] = {0, 1, 0};
-//    matrix[1] = {1, 0, 1};
-//    matrix[2] = {1, 1, 0};
-
-    vector<int> r = s.findSquare(matrix);
-
-
-
+    vector<int> arr = {1, 2, 3, 4, 5};
+    auto* root = init_tree(arr);
+    morris(root);
     return 0;
 }

@@ -10,7 +10,7 @@
 #include <arpa/inet.h>
 #endif
 
-#include "global.h"
+#include "../global.h"
 
 using namespace std;
 

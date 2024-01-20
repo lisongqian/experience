@@ -5,7 +5,7 @@
 #ifndef EXPERIENCE_STRUCTTEST_H
 #define EXPERIENCE_STRUCTTEST_H
 
-#include "global.h"
+#include "../global.h"
 
 #if defined (WIN_BYTEALIGN)
 #	pragma pack (push)
